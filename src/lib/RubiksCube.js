@@ -35,27 +35,10 @@ export default class RubiksCube {
       .to(end, 500)
       .easing(TWEEN.Easing.Quadratic.InOut)
       .onUpdate(({ rotation }) => {
-        // NOTE: Comment out each block to see different mistakes.
-
-        // === 1 ===
-        // cubeGroup.position.applyAxisAngle(axis, rotation - prev.rotation);
-
-        // === 2 ===
-        // cubeGroup.rotateOnWorldAxis(axis, rotation - prev.rotation);
-
-        // === 3 ===
-        // NOTE: DO NOT rotate the cube on it's own axis.
-        // cubeGroup.position.applyAxisAngle(axis, rotation - prev.rotation);
-        // cubeGroup.rotateOnAxis(axis, rotation - prev.rotation);
-
-        // === 4 ===
-        // NOTE: THIS IS CORRECT.
-        // NOTE: Move the position of a cube.
-        // NOTE: Rotate the cube on the world axis.
+       
         cubeGroup.position.applyAxisAngle(axis, rotation - prev.rotation);
         cubeGroup.rotateOnWorldAxis(axis, rotation - prev.rotation);
 
-        // NOTE: Keep track of the previous rotation for tweening.
         prev.rotation = rotation;
       });
 
@@ -165,18 +148,6 @@ export default class RubiksCube {
 
   initializeRubiksCube() {
     this.cubes = [
-      // Front 2x2.
-      // new Cube(-1, 1, 1),
-      // new Cube(1, 1, 1),
-      // new Cube(-1, -1, 1),
-      // new Cube(1, -1, 1),
-
-      // Back 2x2.
-      // new Cube(-1, 1, -1),
-      // new Cube(1, 1, -1),
-      // new Cube(-1, -1, -1),
-      // new Cube(1, -1, -1),
-
       // Front face.
       new Cube(-1, 1, 1),
       new Cube(0, 1, 1),
